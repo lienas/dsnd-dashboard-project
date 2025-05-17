@@ -1,9 +1,9 @@
 # Import the QueryBase class
-from query_base import QueryBase
+from .query_base import QueryBase
 
 # Import dependencies needed for sql execution
 # from the `sql_execution` module
-from sql_execution import QueryMixin
+from .sql_execution import QueryMixin
 
 # Define a subclass of QueryBase
 # called Employee
@@ -75,6 +75,6 @@ class Employee(QueryBase, QueryMixin):
                     JOIN employee_events
                         USING({self.name}_id)
                     WHERE {self.name}.{self.name}_id = {id}
-                """
+                    """
                 
         return self.pandas_query(sql_query)
