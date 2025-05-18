@@ -46,7 +46,7 @@ class ReportDropdown(Dropdown):
         # call the employee_events method
         # that returns the user-type's
         # names and ids
-        return model.employee_events()
+        return model.names()
 
 
 # Create a subclass of base_components/BaseComponent
@@ -111,8 +111,8 @@ class LineChart(MatplotlibViz):
         # the border color and font color to black. 
         # Reference the base_components/matplotlib_viz file 
         # to inspect the supported keyword arguments
-        ax = self.set_axis_styling(
-            ax, border_color='black', font_color='black')
+        self.set_axis_styling(
+            ax, bordercolor='black', fontcolor='black')
         
         # Set title and labels for x and y axis
         ax.set_title('Cumulative Event Counts', fontsize=20)
@@ -154,7 +154,7 @@ class BarChart(MatplotlibViz):
         # If the model's name attribute is "team"
         # We want to visualize the mean of the predict_proba output
         pred = None
-        if self.predictor.name == 'team':
+        if model.name == 'team':
             pred = pred_proba.mean()
         
         # Otherwise set `pred` to the first value
