@@ -6,7 +6,7 @@ from sql_execution import QueryMixin
 
 # Create a subclass of QueryBase
 # called  `Team`
-class Team(QueryBase, QueryMixin):
+class Team(QueryMixin,QueryBase ):
 
     # Set the class attribute `name`
     # to the string "team"
