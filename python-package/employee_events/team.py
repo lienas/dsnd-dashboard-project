@@ -76,4 +76,4 @@ class Team(QueryBase, QueryMixin):
                    )
                 """
                 
-        return self.query(sql_query)
+        return self.pandas_query(sql_query)
