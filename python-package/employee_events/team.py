@@ -4,6 +4,7 @@ from .query_base import QueryBase
 # Import dependencies for sql execution
 from .sql_execution import QueryMixin
 
+
 # Create a subclass of QueryBase
 # called  `Team`
 class Team(QueryBase, QueryMixin):
@@ -12,13 +13,12 @@ class Team(QueryBase, QueryMixin):
     # to the string "team"
     name = "team"
 
-
     # Define a `names` method
     # that receives no arguments
     # This method should return
     # a list of tuples from an sql execution
     def names(self):
-        
+
         # Query 5
         # Write an SQL query that selects
         # the team_name and team_id columns
@@ -28,9 +28,8 @@ class Team(QueryBase, QueryMixin):
                     SELECT team_name, team_id
                     FROM team
                     """
-        
+
         return self.query(sql_query)
-    
 
     # Define a `username` method
     # that receives an ID argument
@@ -49,9 +48,8 @@ class Team(QueryBase, QueryMixin):
                     FROM team
                     WHERE team_id = {id}
                     """
-        
-        return self.query(sql_query)
 
+        return self.query(sql_query)
 
     # Below is method with an SQL query
     # This SQL query generates the data needed for
@@ -60,7 +58,7 @@ class Team(QueryBase, QueryMixin):
     # so when it is called, a pandas dataframe
     # is returns containing the execution of
     # the sql query
-    #### YOUR CODE HERE
+
     def model_data(self, id):
 
         sql_query = f"""
@@ -75,5 +73,5 @@ class Team(QueryBase, QueryMixin):
                     GROUP BY employee_id
                    )
                 """
-                
+
         return self.pandas_query(sql_query)

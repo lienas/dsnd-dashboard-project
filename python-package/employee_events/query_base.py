@@ -1,6 +1,7 @@
 # Import any dependencies needed to execute sql queries
 from .sql_execution import QueryMixin
 
+
 # Define a class called QueryBase
 # Use inheritance to add methods
 # for querying the employee_events database.
@@ -8,11 +9,11 @@ class QueryBase(QueryMixin):
 
     # Create a class attribute called `name`
     # set the attribute to an empty string
-    name=""
+    name = ""
 
     # Define a `names` method that receives
     # no passed arguments
-    def names(self):     
+    def names(self):
         # Return an empty list
         return []
 
@@ -20,7 +21,7 @@ class QueryBase(QueryMixin):
     # that receives an `id` argument
     # This method should return a pandas dataframe
     def event_counts(self, id):
-        
+
         # QUERY 1
         # Write an SQL query that groups by `event_date`
         # and sums the number of positive and negative events
@@ -39,10 +40,8 @@ class QueryBase(QueryMixin):
                     GROUP BY event_date
                     ORDER BY event_date
                     """
-        
-        
+
         return self.pandas_query(sql_query)
-    
 
     # Define a `notes` method that receives an id argument
     # This function should return a pandas dataframe
@@ -55,10 +54,10 @@ class QueryBase(QueryMixin):
         # with f-string formatting
         # so the query returns the notes
         # for the table name in the `name` class attribute
-       sql_query = f"""
+        sql_query = f"""
                     SELECT note_date, note
                     FROM notes
                     JOIN {self.name} USING({self.name}_id)
                     WHERE {self.name}.{self.name}_id = {id}
                     """
-       return self.pandas_query(sql_query)
+        return self.pandas_query(sql_query)
