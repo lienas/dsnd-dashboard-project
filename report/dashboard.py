@@ -60,7 +60,7 @@ class Header(BaseComponent):
         # Using the model argument for this method
         # return a fasthtml H1 objects
         # containing the model's name attribute
-        return H1(model.name)          
+        return H1(model.name.upper())          
 
 # Create a subclass of base_components/MatplotlibViz
 # called `LineChart`
@@ -115,7 +115,7 @@ class LineChart(MatplotlibViz):
             ax, bordercolor='black', fontcolor='black')
         
         # Set title and labels for x and y axis
-        ax.set_title('Cumulative Event Counts', fontsize=20)
+        ax.set_title('Cumulative Event Counts', fontsize=18)
         ax.set_xlabel('Date', fontsize=16)
         ax.set_ylabel('Count', fontsize=16)
 
@@ -160,7 +160,7 @@ class BarChart(MatplotlibViz):
         # Otherwise set `pred` to the first value
         # of the predict_proba output
         else:
-            pred = pred_proba[0]
+            pred =  pred_proba[0][0]
         
         # Initialize a matplotlib subplot
         fig, ax= plt.subplots(figsize=(5, 2))
@@ -168,13 +168,13 @@ class BarChart(MatplotlibViz):
         # Run the following code unchanged
         ax.barh([0], [pred])
         ax.set_xlim(0, 1)
-        ax.set_title('Predicted Recruitment Risk', fontsize=20)
+        ax.set_title('Predicted Recruitment Risk', fontsize=14)
         
         # pass the axis variable
         # to the `.set_axis_styling`
         # method
         ax= self.set_axis_styling(
-            ax, border_color='black', font_color='black')
+            ax, bordercolor='black', fontcolor='black')
 
 # Create a subclass of combined_components/CombinedComponent
 # called Visualizations       
