@@ -21,9 +21,6 @@ class Dropdown(BaseComponent):
             'name': self.name
         }
 
-        if model.name:
-            dropdown_settings['disabled'] = 'disabled'
-
         selector = Select(
             *options,
             **dropdown_settings
