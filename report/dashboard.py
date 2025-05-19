@@ -145,7 +145,7 @@ class BarChart(MatplotlibViz):
         
         # Index the second column of predict_proba output
         # The shape should be (<number of records>, 1)
-        pred_proba = pred_proba[:, 1].reshape(-1,1)
+        pred_proba = pred_proba[:, 1]
         # The output should be a 2D array
         
         # Below, create a `pred` variable set to
@@ -160,13 +160,13 @@ class BarChart(MatplotlibViz):
         # Otherwise set `pred` to the first value
         # of the predict_proba output
         else:
-            pred =  pred_proba[0][0]
+            pred =  pred_proba[0]
         
         # Initialize a matplotlib subplot
         fig, ax= plt.subplots(figsize=(5, 2))
         
         # Run the following code unchanged
-        ax.barh([0], [pred])
+        ax.barh([''], [pred])
         ax.set_xlim(0, 1)
         ax.set_title('Predicted Recruitment Risk', fontsize=14)
         
