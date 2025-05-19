@@ -166,7 +166,7 @@ class BarChart(MatplotlibViz):
         fig, ax= plt.subplots(figsize=(5, 2))
         
         # Run the following code unchanged
-        ax.barh([''], [pred])
+        ax.barh([0], [pred])
         ax.set_xlim(0, 1)
         ax.set_title('Predicted Recruitment Risk', fontsize=20)
         
